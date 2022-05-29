@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { useNavigate, useParams,Link } from "react-router-dom";
+import React, { useState, useEffect, useRef } from "react";
+import { useNavigate, useParams, Link } from "react-router-dom";
 import GoogleMapReact from "google-map-react";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
@@ -8,25 +8,24 @@ import axios from "axios";
 import ClimbingBoxLoader from "react-spinners/ClimbingBoxLoader";
 import { css } from "@emotion/react";
 
+import { useReactToPrint } from "react-to-print";
+import Pdf from "react-to-pdf";
+// import Box from '@mui/material/Box';
+// import Button from '@mui/material/Button';
+
 //icons import
 import FmdGoodIcon from "@mui/icons-material/FmdGood";
+import LocalPrintshopIcon from "@mui/icons-material/LocalPrintshop";
+import PictureAsPdfIcon from "@mui/icons-material/PictureAsPdf";
 import LocalShippingIcon from "@mui/icons-material/LocalShipping";
 import ContentPasteSearchIcon from "@mui/icons-material/ContentPasteSearch";
 import InventoryIcon from "@mui/icons-material/Inventory";
 
 import "./Track.css";
+import CancelImage from '../../assets/cancel.png'
 import BaseApi from "../../services/BaseApi";
 
 const override = css`
-	${
-		"" /* display: block;
-  margin: 0 auto;
-  border-color: red;
-  height:50%;
-  width:50%;
-  transform:translate(-50,50) */
-	}
-
 	position: absolute;
 	top: 50%;
 	right: 50%;
@@ -41,9 +40,19 @@ function TrackingDetails() {
 
 	const [Shippment, setShippment] = useState({});
 	const [loading, setLoading] = useState(true);
-	const [NoShippment, setNoShippment] = useState(false);
+	const [NoShippment, setNoShippment] = useState({
+		IsError: false,
+		ErrorMessage: "",
+	});
 
 	const coordinates = { lat: 0, lng: 0 };
+
+	const printRef = useRef();
+
+	//handle print function
+	const handlePrint = useReactToPrint({
+		content: () => printRef.current,
+	});
 
 	function getShippment() {
 		setLoading(true);
@@ -56,16 +65,29 @@ function TrackingDetails() {
 			})
 			.catch((error) => {
 				// console.log(error?.response?.status);
-console.log(error)
-        // if (error?.response?.status === 404  ) {
-          
-          
-        // }
-        
-        setNoShippment(true)
+				console.log(error);
+				if (error?.response?.status === 500) {
+					setLoading(false);
+					return setNoShippment({
+						IsError: true,
+						ErrorMessage: error?.response?.message,
+					});
+				}
+
+				if (error?.response?.status === 404) {
+					setLoading(false);
+					return setNoShippment({
+						IsError: true,
+						ErrorMessage: error?.response?.message,
+					});
+				}
+
+				setNoShippment({IsError:true,ErrorMessage:error.message});
 				setLoading(false);
 			});
 	}
+
+
 
 	useEffect(() => {
 		getShippment();
@@ -73,9 +95,25 @@ console.log(error)
 
 	// console.log(Shippment);
 
+	const pdfOption = {
+		orientation: "portrait",
+		unit: "mm",
+		format: [210, 297],
+	
+	};
+
 	return (
 		<>
-			{!loading ? (
+			{loading && (
+				<ClimbingBoxLoader
+					color={"#0F2C67"}
+					loading={loading}
+					css={override}
+					size={50}
+				/>
+			)}
+
+			{!loading && (
 				<div className='trackPage'>
 					<div className='HeaderBar'>
 						<div className='headerTitle1'>
@@ -89,9 +127,10 @@ console.log(error)
 						</div>
 					</div>
 
-					{Shippment && (
-						<>
-						{!NoShippment &&	<div className='viewBodyWrapper'>
+					{/* {Shippment && ( */}
+					<>
+						{!NoShippment.IsError && (
+							<div className='viewBodyWrapper'>
 								<div className='mapView'>
 									{/* <GoogleMapReact
           bootstrapURLKeys={{ key:'AIzaSyCbAS-86s6ofukYrm_GEp2sHSHl2SbT9sI' }}
@@ -107,7 +146,7 @@ console.log(error)
           /> 
         </GoogleMapReact> */}
 								</div>
-								<div className='detailsView'>
+								<div className='detailsView'  ref={printRef}>
 									<h2 className='trackingIdTitle'>Tracking Id: {id}</h2>
 
 									<div className='details'>
@@ -190,21 +229,71 @@ console.log(error)
 										</div>
 									</div>
 								</div>
-							</div>}
+								<div className='actionBtn'>
+									<Box sx={{ "& button": { mb: 4, m: 1 } }}>
+										<div
+											style={{
+												display: "flex",
+												alignItems: "center",
+												justifyContent: "center",
+											}}
+										>
+											<Button
+												variant='contained'
+												onClick={handlePrint}
+												color='primary'
+												size='small'
+												endIcon={
+													<LocalPrintshopIcon style={{ color: "white" }} />
+												}
+											>
+												Print
+											</Button>
+											<Pdf
+												targetRef={printRef}
+												scale={1}
+												options={pdfOption}
+												filename={`Package ${Shippment?._id}`}
+											>
+												{({ toPdf }) => (
+													<Button
+														endIcon={
+															<PictureAsPdfIcon style={{ color: "white" }} />
+														}
+														size='small'
+														color='secondary'
+														variant='contained'
+														onClick={toPdf}
+													>
+														PDF
+													</Button>
+												)}
+											</Pdf>
+										</div>
+									</Box>
+								</div>
+							</div>
+						)}
 
-						{NoShippment &&	<div className='invalidIdView'>
-                <p>Invalid tracking id click <Link  to='/'> here to retry </Link></p>
-              </div>}
-						</>
-					)}
+						{NoShippment.IsError && (
+							<div className='invalidIdView'>
+							<img src={CancelImage} className='cancelImage' alt="error"   />
+								<p>
+									{NoShippment.ErrorMessage}
+									{/* <Link to='/'> retry </Link> */}
+{/* 
+									<Button size='small' color="primary" onClick={()=>navigate('/',{replace:true})}> Click here to retry</Button> */}
+								</p>
+								
+							
+
+									<Button size='small' color="primary" onClick={()=>navigate('/',{replace:true})}> Click here to retry</Button>
+								
+							</div>
+						)}
+					</>
+					{/* )} */}
 				</div>
-			) : (
-				<ClimbingBoxLoader
-					color={"#0F2C67"}
-					loading={loading}
-					css={override}
-					size={50}
-				/>
 			)}
 		</>
 	);
