@@ -1,0 +1,71 @@
+.LoginContainer {
+    height: 100%;
+    width: 100%;
+    background: url('../../assets//shipping.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* border: 1px solid yellow; */
+}
+
+.formWrapper {
+    height: 80%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    /* border: 1px solid red; */
+}
+
+.formContent {
+    /* border: 1px solid yellow; */
+    height: 60%;
+    /* max-height: 60%; */
+    width: 45%;
+    /* max-width: 400px; */
+    background-color: white;
+    border-radius: 4%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding-bottom: 15px;
+}
+
+.formContent>h3 {
+    text-align: center;
+    color: var(--primary-color);
+    font-size: 30px;
+    padding-top: 30px;
+    padding-bottom: 10px;
+}
+
+.formContent>p {
+    text-align: center;
+    font-size: 16px;
+    padding-top: 5px;
+    padding-bottom: 10px;
+}
+
+.formContent>p>a {
+    text-decoration: none;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 85%;
+    width: 100%;
+    min-width: 500px;
+    justify-content: center;
+    /* border: 1px solid yellow */
+}
+
+img {
+    height: 60px;
+    width: 60px;
+}

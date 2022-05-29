@@ -1,0 +1,37 @@
+.pageWrapper {
+    padding: 10px;
+    /* margin-top: 30px; */
+    /* background-color: #0AA1DD; */
+    /* background-color: var(--primary-color); */
+    /* border: 1px solid red; */
+}
+
+.pageWrapper>p {
+    text-align: center;
+    margin-top: 15px;
+}
+
+.shippmentList {
+    width: 100%;
+    max-width: 1000px;
+}
+
+span {
+    font-weight: bold;
+    color: var(--primary-color)
+}
+
+a {
+    text-decoration: none;
+}
+
+.actionIcons {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 100%;
+}
+
+.actionIcon {
+    font-size: 38px;
+}

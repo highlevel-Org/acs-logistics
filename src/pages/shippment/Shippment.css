@@ -1,0 +1,80 @@
+.pageWrapper {
+    padding: 10px;
+    margin-top: 80px;
+}
+
+.detailsBox {
+    width: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 800px;
+}
+
+#hiddenTitle {
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    text-transform: uppercase;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.boxDetails {
+    width: 100%;
+}
+
+.boxDetailsTitle {
+    padding: 0;
+    margin: 0;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.boxDetails>p {
+    padding: 4px;
+    font-size: 16px;
+    font-weight: 400;
+    /* font-family: cursive; */
+    word-wrap: break-word;
+}
+
+
+/* .boxDetailsTitle {
+    color: var(--primary-color);
+    text-decoration: underline;
+    font-weight: bold;
+} */
+
+.modalFormConatiner {
+    /* margin: 10px; */
+    /* padding-top: 20px; */
+    /* width: 90%; */
+}
+
+.modalFormConatiner>h4 {
+    margin-bottom: 10px;
+    color: #0F2C67;
+    text-align: "center";
+    text-transform: uppercase
+}
+
+form {
+    height: 95%;
+    padding: 15px 5px 5px 5px;
+    /* border: 1px solid red; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 90%;
+}
+
+
+/* @media print {
+    All your print styles go here
+    #header, #footer, #nav { display: none !important; } 
+    #hiddenTitle {
+        display: block;
+    }
+} */

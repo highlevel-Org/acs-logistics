@@ -1,0 +1,28 @@
+.pageWrapper {
+    padding: 10px;
+    /* margin-top: 70px; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.pageWrapper>p {
+    text-align: center;
+    margin-top: 15px;
+}
+
+.formWrapper {
+    margin-top: 15px;
+    /* max-height: 100vh; */
+    max-width: 900px;
+    /* border: 1px solid red; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+span {
+    font-weight: bold;
+    color: var(--primary-color)
+}
