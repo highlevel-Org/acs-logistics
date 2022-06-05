@@ -24,6 +24,8 @@ import DriveFileRenameOutlineIcon from "@mui/icons-material/DriveFileRenameOutli
 import AddLocationIcon from "@mui/icons-material/AddLocation";
 import ScaleIcon from "@mui/icons-material/Scale";
 import PhotoCamera from "@mui/icons-material/PhotoCamera";
+import AddCardIcon from '@mui/icons-material/AddCard';
+import PersonIcon from '@mui/icons-material/Person';
 
 // import Paper from "@mui/material/Paper";
 import Grid from "@mui/material/Grid";
@@ -52,6 +54,7 @@ function CreateShippment() {
 		qauntity: 1,
 		weight: 1,
 		serviceType: "",
+		serialNumber: "",
 		shippingCost: "",
 		deleiveryDate: Date.now(),
 		// completed: false,
@@ -114,6 +117,7 @@ function CreateShippment() {
 			weight: values.weight,
 			completed: false,
 			imageUrl,
+			serialNumber:values.serialNumber,
 			serviceType: values.serviceType,
 			deliveryDate: values.deleiveryDate,
 			shippingCost: values.shippingCost,
@@ -261,6 +265,27 @@ function CreateShippment() {
 									}}
 								/>
 
+<FormControl sx={{ m: 1, width: "27ch" }} variant='outlined'>
+									<InputLabel htmlFor='serialNumber'>
+										Serial Number
+									</InputLabel>
+									<OutlinedInput
+										id='serialNumber'
+										type='text'
+										required
+										value={values.serialNumber}
+										onChange={handleChange("serialNumber")}
+										endAdornment={
+											<InputAdornment position='end'>
+												<IconButton aria-label='description icon' edge='end'>
+													<AddCardIcon color='primary' />
+												</IconButton>
+											</InputAdornment>
+										}
+										label='Email'
+									/>
+								</FormControl>
+					
 								<FormControl sx={{ m: 1, width: "27ch" }}>
 									<InputLabel id='serviceType'>ServiceType</InputLabel>
 									<Select
@@ -332,7 +357,7 @@ function CreateShippment() {
 										endAdornment={
 											<InputAdornment position='end'>
 												<IconButton aria-label='description icon' edge='end'>
-													<DriveFileRenameOutlineIcon color='primary' />
+													<PersonIcon color='primary' />
 												</IconButton>
 											</InputAdornment>
 										}
@@ -434,7 +459,7 @@ function CreateShippment() {
 										endAdornment={
 											<InputAdornment position='end'>
 												<IconButton aria-label='description icon' edge='end'>
-													<DriveFileRenameOutlineIcon color='primary' />
+													<PersonIcon color='primary' />
 												</IconButton>
 											</InputAdornment>
 										}

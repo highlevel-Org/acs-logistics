@@ -40,6 +40,8 @@ import AddLocationIcon from "@mui/icons-material/AddLocation";
 import CloseIcon from "@mui/icons-material/Close";
 import ScaleIcon from "@mui/icons-material/Scale";
 import PhotoCamera from "@mui/icons-material/PhotoCamera";
+import AddCardIcon from '@mui/icons-material/AddCard';
+import PersonIcon from '@mui/icons-material/Person';
 
 // import { styled } from '@mui/material/styles';
 import FormGroup from "@mui/material/FormGroup";
@@ -145,6 +147,7 @@ function Shippment() {
 			description: packageShipment?.shippment?.description,
 			qauntity: packageShipment?.shippment?.quantity,
 			weight: packageShipment?.shippment?.weight,
+			serialNumber: packageShipment?.shippment?.serialNumber,
 			serviceType: packageShipment?.shippment?.serviceType,
 			deleiveryDate: new Date(
 				packageShipment?.shippment?.deliveryDate?.split("T")[0]
@@ -228,6 +231,7 @@ function Shippment() {
 			weight: values.weight,
 			completed: false,
 			imageUrl: packageShipment?.shippment?.imageUrl,
+			serialNumber: values.serialNumber,
 			serviceType: values.serviceType,
 			deliveryDate: values.deleiveryDate,
 			// shippedDate: ,
@@ -261,7 +265,7 @@ function Shippment() {
 			user: user,
 		};
 
-		// console.log("update",payload)
+		console.log("update",payload)
 
 		dispatch(updateShippment({ payload, usertoken, id }));
 
@@ -291,7 +295,7 @@ function Shippment() {
 		};
 	}, [windDimension]);
 
-	// console.log(windDimension);
+	// console.log(packageShipment?.shippment);
 
 	return (
 		<>
@@ -368,6 +372,9 @@ function Shippment() {
 											</p>
 											<p>
 												Description:{packageShipment?.shippment?.description}
+											</p>
+											<p>
+												Serial Number:{packageShipment?.shippment?.serialNumber}
 											</p>
 											<p>Quantity:{packageShipment?.shippment?.quantity}</p>
 											<p>Weight:{packageShipment?.shippment?.weight} kg</p>
@@ -717,6 +724,27 @@ function Shippment() {
 										}}
 									/>
 
+<FormControl sx={{ m: 1, width: "27ch" }} variant='outlined'>
+										<InputLabel htmlFor='serialNumber'>
+											Serial Number
+										</InputLabel>
+										<OutlinedInput
+											id='serialNUmber'
+											type='text'
+											required
+											value={values?.serialNumber}
+											onChange={handleChange("serialNumber")}
+											endAdornment={
+												<InputAdornment position='end'>
+													<IconButton aria-label='description icon' edge='end'>
+														<AddCardIcon color='primary' />
+													</IconButton>
+												</InputAdornment>
+											}
+											label='Email'
+										/>
+									</FormControl>
+
 									<FormControl sx={{ m: 1, width: "27ch" }}>
 										<InputLabel id='serviceType'>ServiceType</InputLabel>
 										<Select
@@ -729,8 +757,8 @@ function Shippment() {
 											<MenuItem value=''>
 												<em>None</em>
 											</MenuItem>
-											<MenuItem value='shipping'>shipping</MenuItem>
-											<MenuItem value='pickup'>PickUp</MenuItem>
+											<MenuItem value='shipping'>Express Shipping</MenuItem>
+										<MenuItem value='pickup'>PickUp</MenuItem>
 										</Select>
 									</FormControl>
 

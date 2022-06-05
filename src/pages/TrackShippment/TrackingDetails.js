@@ -93,7 +93,7 @@ function TrackingDetails() {
 		getShippment();
 	}, []);
 
-	// console.log(Shippment);
+	console.log(Shippment);
 
 	const pdfOption = {
 		orientation: "portrait",
@@ -148,6 +148,7 @@ function TrackingDetails() {
 								</div>
 								<div className='detailsView'  ref={printRef}>
 									<h2 className='trackingIdTitle'>Tracking Id: {id}</h2>
+									{Shippment?.serialNumber !== "" && <h2 className='trackingIdTitle'>Serial Number: {Shippment?.serialNumber}</h2>}
 
 									<div className='details'>
 										<div className='detailsList'>
