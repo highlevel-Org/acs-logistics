@@ -2,7 +2,7 @@
     "name": "acs-logistcs",
     "version": "0.1.0",
     "private": true,
-    "homepage": "/",
+    "homepage": "https://acl-logistics.net/",
     "dependencies": {
         "@date-io/date-fns": "^2.14.0",
         "@emotion/react": "^11.9.0",
