@@ -2,8 +2,8 @@ import React, { useState, useEffect } from "react";
 import { Link ,useNavigate,useLocation} from "react-router-dom";
 import { motion } from "framer-motion";
 
-import ChevronRightIcon from "@material-ui/icons/ChevronRight";
-import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
+import ChevronRightIcon from "@mui/icons-material/ChevronRight";
+import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import ExitToAppIcon from '@mui/icons-material/ExitToApp';
 
 import sidebarData from "../Data/sidebarData";

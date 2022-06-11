@@ -1,7 +1,8 @@
 import React from "react";
 import {useLocation} from "react-router-dom";
 import LocalShippingIcon from '@mui/icons-material/LocalShipping';
-import AccountCircleIcon from '@mui/icons-material/AccountCircle';import {useSelector} from "react-redux";
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import {useSelector} from "react-redux";
 
 //Local imports
 import {userSelector} from "../../Store/userFeatures";
