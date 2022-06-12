@@ -1,5 +1,5 @@
 .trackPage {
-    height: 100%;
+    height: 93%;
     width: 100%;
     background: url('../../assets//shipping.jpg');
     background-repeat: no-repeat;
@@ -21,6 +21,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    border-bottom: 1px solid white;
     /* border: 1px solid red; */
 }
 
@@ -46,7 +47,7 @@
 }
 
 .formBodyWarpper {
-    margin-top: 150px;
+    margin-top: 100px;
     width: 50%;
     max-width: 500px;
     height: 40%;
@@ -103,7 +104,7 @@
     flex-direction: column;
     overflow-y: scroll;
     padding: 10px;
-    max-width: 800px;
+    max-width: 1000px;
 }
 
 .mapView {
@@ -181,6 +182,53 @@
     height: '100px';
     width: '100px';
     margin-bottom: 5px
+}
+
+footer {
+    background-color: #293462;
+    border-top: 1px solid white;
+    width: 100%;
+    /* position: sticky;
+    bottom: 0; */
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.footerTitle {
+    color: white;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 15px;
+    font-size: 18px;
+}
+
+.footerItems {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    /* width: 70%; */
+}
+
+.footerItems>p {
+    color: white;
+    margin-top: 5px;
+    font-size: 18px;
+}
+
+.footerItems>ul {
+    display: flex;
+    align-items: center;
+    /* justify-content: space-around; */
+    list-style-type: none;
+    margin-top: 5px;
+}
+
+.footerItems>ul>li>a {
+    text-decoration: none;
+    color: white;
+    padding: 5px;
 }
 
 

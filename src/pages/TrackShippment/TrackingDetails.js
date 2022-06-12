@@ -5,6 +5,9 @@ import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import axios from "axios";
+import FacebookIcon from "@mui/icons-material/Facebook";
+import TwitterIcon from "@mui/icons-material/Twitter";
+import EmailIcon from "@mui/icons-material/Email";
 import ClimbingBoxLoader from "react-spinners/ClimbingBoxLoader";
 import { css } from "@emotion/react";
 
@@ -122,8 +125,8 @@ function TrackingDetails() {
 						</div>
 
 						<div className='headerTitle2'>
-							<h3>{id}</h3>
-							<InventoryIcon style={{ color: "white" }} />
+							<EmailIcon style={{ color: "white" }} />
+							<h3>support@acl-logistics.net</h3>
 						</div>
 					</div>
 
@@ -294,8 +297,64 @@ function TrackingDetails() {
 						)}
 					</>
 					{/* )} */}
+
+					{/* <footer>
+				<p className='footerTitle'>
+					{" "}
+					&copy; {new Date().getFullYear()} ACS Logistics
+				</p>
+
+				<div className='footerItems'>
+					<p>Contact Us</p>
+					<ul>
+						<li>
+							<a href='mailto:support@acl-logistics.net'  target='_blank' rel='noopener noreferrer'>
+								<EmailIcon />
+							</a>
+						</li>
+						<li>
+							<a href='http://' target='_blank' rel='noopener noreferrer'>
+								<TwitterIcon />
+							</a>
+						</li>
+						<li>
+							<a href='http://' target='_blank' rel='noopener noreferrer'>
+								<FacebookIcon />
+							</a>
+						</li>
+					</ul>
+				</div>
+			</footer> */}
 				</div>
 			)}
+
+			<footer>
+				<p className='footerTitle'>
+					{" "}
+					&copy; {new Date().getFullYear()} ACS Logistics
+				</p>
+
+				<div className='footerItems'>
+					<p>Contact Us</p>
+					<ul>
+						<li>
+							<a href='mailto:support@acl-logistics.net'  target='_blank' rel='noopener noreferrer'>
+								<EmailIcon />
+							</a>
+						</li>
+						<li>
+							<a href='http://' target='_blank' rel='noopener noreferrer'>
+								<TwitterIcon />
+							</a>
+						</li>
+						<li>
+							<a href='http://' target='_blank' rel='noopener noreferrer'>
+								<FacebookIcon />
+							</a>
+						</li>
+					</ul>
+				</div>
+			</footer>
 		</>
 	);
 }
