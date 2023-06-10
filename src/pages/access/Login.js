@@ -84,7 +84,7 @@ function Login() {
 				localStorage.setItem("UserDetails", JSON.stringify(response.data));
 				dispatch(getUser(response.data));
 				setLoading(false);
-				 navigate("/dashboard", {replace:true} )
+				navigate("/dashboard", { replace: true });
 				// navigate(from, { replace: true });
 			})
 			.catch((error) => {
@@ -98,9 +98,9 @@ function Login() {
 	}
 
 	return (
-		<div className='LoginContainer'>
-			<div className='formWrapper'>
-				<div className='formContent'>
+		<div className="LoginContainer">
+			<div className="formWrapper">
+				<div className="formContent">
 					{/* <img src={Logo} alt='acs' /> */}
 					<h3>Login</h3>
 					<form onSubmit={HandleSubmit}>
@@ -114,57 +114,59 @@ function Login() {
 						autoComplete='off'
 					> */}
 
-						{ ShowError && <span style={{ color: "red" }}>
-							Please enter Email and password to login*
-						</span>}
-						<FormControl sx={{ my: 2, width: "70%" }} variant='outlined'>
-							<InputLabel htmlFor='outlined-adornment-email'>Email</InputLabel>
+						{ShowError && (
+							<span style={{ color: "red" }}>
+								Please enter Email and password to login*
+							</span>
+						)}
+						<FormControl sx={{ my: 2, width: "70%" }} variant="outlined">
+							<InputLabel htmlFor="outlined-adornment-email">Email</InputLabel>
 							<OutlinedInput
-								id='outlined-adornment-email'
-								type='text'
+								id="outlined-adornment-email"
+								type="text"
 								value={values.email}
 								onChange={handleChange("email")}
 								endAdornment={
-									<InputAdornment position='end'>
-										<IconButton aria-label='email icon' edge='end'>
-											<MailIcon color='primary' />
+									<InputAdornment position="end">
+										<IconButton aria-label="email icon" edge="end">
+											<MailIcon color="primary" />
 										</IconButton>
 									</InputAdornment>
 								}
-								label='Email'
+								label="Email"
 							/>
 						</FormControl>
 
-						<FormControl sx={{ my: 2, width: "70%" }} variant='outlined'>
-							<InputLabel htmlFor='outlined-adornment-password'>
+						<FormControl sx={{ my: 2, width: "70%" }} variant="outlined">
+							<InputLabel htmlFor="outlined-adornment-password">
 								Password
 							</InputLabel>
 							<OutlinedInput
-								id='outlined-adornment-password'
+								id="outlined-adornment-password"
 								type={values.showPassword ? "text" : "password"}
 								value={values.password}
 								onChange={handleChange("password")}
 								endAdornment={
-									<InputAdornment position='end'>
+									<InputAdornment position="end">
 										<IconButton
-											aria-label='toggle password visibility'
+											aria-label="toggle password visibility"
 											onClick={handleClickShowPassword}
 											onMouseDown={handleMouseDownPassword}
-											edge='end'
+											edge="end"
 										>
 											{values.showPassword ? (
-												<VisibilityOff color='primary' />
+												<VisibilityOff color="primary" />
 											) : (
-												<Visibility color='primary' />
+												<Visibility color="primary" />
 											)}
 										</IconButton>
 									</InputAdornment>
 								}
-								label='Password'
+								label="Password"
 							/>
 						</FormControl>
 						<Stack
-							direction='row'
+							direction="row"
 							sx={{
 								m: 2,
 								alignSelf: "center",
@@ -180,11 +182,11 @@ function Login() {
 							<LoadingButton
 								// size='small'
 								// onClick={handleClick}
-								type='submit'
+								type="submit"
 								endIcon={<SendIcon style={{ color: "white" }} />}
 								loading={Loading}
-								loadingPosition='end'
-								variant='contained'
+								loadingPosition="end"
+								variant="contained"
 							>
 								Login
 							</LoadingButton>
@@ -192,7 +194,7 @@ function Login() {
 						{/* </Box> */}
 					</form>
 					<p>
-						Don't have an account ? <Link to='/register'>Register here</Link>
+						Don't have an account ? <Link to="/register">Register here</Link>
 					</p>
 				</div>
 			</div>

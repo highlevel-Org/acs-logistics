@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import {  Routes, Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import { createTheme, ThemeProvider, styled } from "@mui/material/styles";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
@@ -24,7 +24,6 @@ import "react-toastify/dist/ReactToastify.css";
 import SideNav from "./components/SideNav/SideNav";
 import Layout from "./RouteConfig/Layout";
 import Auth from "./RouteConfig/Protected";
-
 
 const theme = createTheme({
 	// status: {
@@ -51,7 +50,7 @@ function App() {
 		<>
 			<LocalizationProvider dateAdapter={AdapterDateFns}>
 				<ToastContainer
-					position='top-center'
+					position="top-center"
 					autoClose={4000}
 					hideProgressBar={true}
 					newestOnTop={true}
@@ -62,36 +61,30 @@ function App() {
 					pauseOnHover
 				/>
 				<ThemeProvider theme={theme}>
-						<SideNav>
-			
-							<Routes>
-								{/* Public routes */}
-								<Route path='/' element={<Layout />}>
-									<Route path='/'  element={<Track />} />
-									<Route path='track/:id' element={<TrackingDetails />} />
-									<Route path='login' element={<Login />} />
-									<Route path='register' element={<Register />} />
+					<SideNav>
+						<Routes>
+							{/* Public routes */}
+							<Route path="/" element={<Layout />}>
+								{/* <Route path='/'  element={<Track />} />
+									<Route path='track/:id' element={<TrackingDetails />} /> */}
+								<Route path="/" element={<Login />} />
+								<Route path="register" element={<Register />} />
 
-									{/* Protected routes */}
-									<Route element={<Auth />}>
-										<Route path='dashboard' element={<Dashboard />} />
-										<Route path='shippments' element={<AllShippment />} />
-										<Route
-											path='shippments/:id'
-											element={<Shippment />}
-										/>
+								{/* Protected routes */}
+								<Route element={<Auth />}>
+									<Route path="dashboard" element={<Dashboard />} />
+									<Route path="shippments" element={<AllShippment />} />
+									<Route path="shippments/:id" element={<Shippment />} />
 
-								
-										<Route path='create' element={<CreateShippment />} />
-										<Route path='completed' element={<CompletedShippment />} />
-									</Route>
-
-									{/* Not found route */}
-									<Route path='*' element={<NotFound />} />
+									<Route path="create" element={<CreateShippment />} />
+									<Route path="completed" element={<CompletedShippment />} />
 								</Route>
-							</Routes>
-				
-						</SideNav>
+
+								{/* Not found route */}
+								<Route path="*" element={<NotFound />} />
+							</Route>
+						</Routes>
+					</SideNav>
 				</ThemeProvider>
 			</LocalizationProvider>
 		</>
